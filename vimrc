@@ -1,0 +1,11 @@
+"example .vimrc
+"Colors scheme
+colors pablo
+syntax on
+set showcmd
+set hlsearch
+set autoindent
+set ruler
+set laststatus=2
+set visualbell
+set number

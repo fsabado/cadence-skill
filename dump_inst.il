@@ -1,0 +1,37 @@
+;Open layout view - current view 
+procedure(DumpInstanceLoc()
+      prog(list(cv)
+        cv = geGetWindowCellView()
+        cn = (cv~>cellName)
+        clib = (cv~>libName)
+        printf("\n %s %s" cn clib)
+        ;List all macros
+        foreach(instance cv~>instances 
+          iot = (instance~>objType)
+          ixy = (instance~>xy)
+          ior = (instance~>orient)
+          icn = (instance~>master~>cellName)
+          iln = (instance~>master~>libName)
+          ;printf("\n objType %s %s %s %n %n" iot ior icn car(ixy) cadr(ixy)) 
+          printf("\n PNRCMD -instance xxxx -cellName %s -orientation %s -locx %n -locy %n" icn ior car(ixy) cadr(ixy)) 
+        )
+      )
+)
+
+;Dump currently selected
+procedure(DumpSelectedInstanceLoc()
+   prog(list(cv)
+    cv = geGetWindowCellView()
+    cn = (cv~>cellName)
+    clib = (cv~>libName)
+    printf("\n %s %s" cn clib)
+    ;get current selectio
+    instance = car(car(geGetObjectSelectedSet(cv)))
+    iot = (instance~>objType)
+    ixy = (instance~>xy)
+    ior = (instance~>orient)
+    icn = (instance~>master~>cellName)
+    iln = (instance~>master~>libName)
+    ;printf("\n objType %s %s %s %n %n" iot ior icn car(ixy) cadr(ixy)) 
+    )
+)
